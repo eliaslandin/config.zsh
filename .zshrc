@@ -123,3 +123,14 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 [ -f "$HOME/.zshrc-local" ] && source "$HOME/.zshrc-local"
+
+# Create git worktree + tmux session
+gt() {
+  local branch="$1"
+  local suffix="${branch##*/}"
+  local cwd="$(basename "$PWD")"
+  local dir="../${cwd}-${suffix}"
+
+  gwta -b "$branch" "$dir" &&
+  tmux new -s "$suffix" -c "$dir"
+}
