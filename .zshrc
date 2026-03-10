@@ -124,6 +124,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 [ -f "$HOME/.zshrc-local" ] && source "$HOME/.zshrc-local"
 
+alias npmcis='npm ci && npm start'
+
 # Create git worktree + tmux session
 gt() {
   local branch="$1"
